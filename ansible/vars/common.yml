@@ -1,0 +1,26 @@
+---
+    php_ppa: php5
+    doc_root: /vagrant
+    sys_packages: [
+      "git",
+      "vim",
+      "sendmail",
+      "drush",
+      "iceweasel",
+      "zip",
+      "unzip",
+      "apache2-utils",
+      "g++",
+      "libssl-dev",
+    ]
+    dist: precise
+    php_packages: [
+      "php5-gd",
+      "php5-cli",
+      "php5-curl",
+      "php5-mcrypt",
+      "php5-mysql",
+      "php5-dev",
+      "php5-xdebug"
+    ]
+    pecl_packages: []
