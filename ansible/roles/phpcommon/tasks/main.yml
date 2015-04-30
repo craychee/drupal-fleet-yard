@@ -2,3 +2,8 @@
   sudo: yes
   apt: pkg={{ item }} state=latest
   with_items: php_packages
+
+- name: set xdebug nesting level for behat
+  lineinfile: dest=/etc/php5/mods-available/xdebug.ini
+              regexp='^xdebug\.max_nesting_level ='
+              line='xdebug.max_nesting_level = 500'
