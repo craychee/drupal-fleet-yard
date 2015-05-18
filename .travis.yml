@@ -3,7 +3,7 @@ language: 'python'
 python: '2.7'
 
 env:
-  - SITE_AND_INVENTORY='ansible/craychee_default_playbook.yml -i ansible/inventory'
+  - SITE_AND_INVENTORY='ansible/travis.yml -i ansible/inventory'
 
 install:
   - 'pip install ansible==1.8.2'
