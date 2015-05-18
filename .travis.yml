@@ -32,7 +32,6 @@ script:
     || (echo 'PHP 5.5 test: fail' && exit 1)
   - >
     nginx -v
-    | grep -q 'nginx/1.4.6'
     && (echo 'Nginx test: pass' && exit 0)
     || (echo 'Nginx test: fail' && exit 1)
   - >
