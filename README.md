@@ -1,6 +1,6 @@
 # Drupal Fleet Yard
 
-https://travis-ci.org/craychee/drupal-fleet-yard.svg?branch=master
+[![Build Status](https://travis-ci.org/craychee/drupal-fleet-yard.svg?branch=master)](https://travis-ci.org/craychee/drupal-fleet-yard)
 
 A building environment for constructing Drupal-optomized systems adapted from [phansible](http://phansible.com/).
 
