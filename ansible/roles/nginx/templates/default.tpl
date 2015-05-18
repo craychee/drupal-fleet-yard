@@ -1,10 +1,10 @@
 server {
     listen  80;
 
-    root {{ doc_root }};
-    index index.html index.php;
+    server_name ~^(www\.)?(?<domain>.+)$;
 
-    server_name {{ servername }};
+    root /var/www/sites/$domain/www;
+    index index.html index.php;
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;

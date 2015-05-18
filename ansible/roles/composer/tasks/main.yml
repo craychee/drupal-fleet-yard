@@ -1,2 +1,9 @@
+---
+- name: Add Composer PPA
+  apt_repository: repo="ppa:duggan/composer" update_cache=yes
+
 - name: Install Composer
-  shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+  apt: name=php5-composer state=present force=yes
+
+- name: Composer self update
+  shell: composer self-update
