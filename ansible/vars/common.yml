@@ -1,6 +1,7 @@
 ---
     php_ppa: php5
-    doc_root: /vagrant
+    doc_root: /var/www/sites/%0/www
+    dir_root: /var/www/sites/*
     sys_packages: [
       "git",
       "vim",
