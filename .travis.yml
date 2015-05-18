@@ -1,0 +1,87 @@
+---
+language: 'python'
+python: '2.7'
+
+env:
+  - SITE_AND_INVENTORY='ansible/craychee_default_playbook.yml -i ansible/inventory'
+
+install:
+  - 'pip install ansible==1.8.2'
+  - 'printf "[defaults]\nroles_path = provisioning/roles/" > ansible.cfg'
+
+script:
+  - 'ansible-playbook $SITE_AND_INVENTORY --syntax-check'
+  - 'travis_wait ansible-playbook $SITE_AND_INVENTORY --connection=local -vvvv'
+  - >
+    ansible-playbook $SITE_AND_INVENTORY --connection=local
+    | grep -q 'failed=0'
+    && (echo 'Failure test: pass' && exit 0)
+    || (echo 'Failure test: fail' && exit 1)
+  - >
+    php5-fpm -v
+    | grep -q 'PHP\s5.5'
+    && (echo 'PHP fpm test: pass' && exit 0)
+    || (echo 'PHP fpm test: fail' && exit 1)
+  - >
+    php -v
+    | grep -q 'PHP\s5.5'
+    && (echo 'PHP 5.5 test: pass' && exit 0)
+    || (echo 'PHP 5.5 test: fail' && exit 1)
+  - >
+    nginx -v
+    | grep -q 'nginx/1.4.6'
+    && (echo 'Nginx test: pass' && exit 0)
+    || (echo 'Nginx test: fail' && exit 1)
+  - >
+    pidof nginx
+    && (echo 'Nginx running test: pass' && exit 0)
+    || (echo 'Nginx running test: fail' && exit 1)
+  - >
+    which composer
+    && (echo 'Installed composer: pass' && exit 0)
+    || (echo 'Installed composer: fail' && exit 1)
+  - >
+    dpkg --get-selections
+    | grep -q 'php5-mcrypt'
+    && (echo 'php5-mcrypt test: pass' && exit 0)
+    || (echo 'php5-mcrypt test: fail' && exit 1)
+  - >
+    dpkg --get-selections
+    | grep -q 'php5-mysql'
+    && (echo 'php5-mysql test: pass' && exit 0)
+    || (echo 'php5-mysql test: fail' && exit 1)
+  - >
+    dpkg --get-selections
+    | grep -q 'php5-xdebug'
+    && (echo 'php5-xdebug test: pass' && exit 0)
+    || (echo 'php5-xdebug test: fail' && exit 1)
+  - >
+    dpkg --get-selections
+    | grep -q 'php5-gd'
+    && (echo 'php5-gd test: pass' && exit 0)
+    || (echo 'php5-gd test: fail' && exit 1)
+  - >
+    dpkg --get-selections
+    | grep -q 'php5-curl'
+    && (echo 'php5-curl test: pass' && exit 0)
+    || (echo 'php5-curl test: fail' && exit 1)
+  - >
+    dpkg --get-selections
+    | grep -q 'git'
+    && (echo 'git test: pass' && exit 0)
+    || (echo 'git test: fail' && exit 1)
+  - >
+    dpkg --get-selections
+    | grep -q 'vim'
+    && (echo 'vim test: pass' && exit 0)
+    || (echo 'vim test: fail' && exit 1)
+  - >
+    dpkg --get-selections
+    | grep -q 'sendmail'
+    && (echo 'sendmail test: pass' && exit 0)
+    || (echo 'sendmail test: fail' && exit 1)
+  - >
+    dpkg --get-selections
+    | grep -q 'drush'
+    && (echo 'drush test: pass' && exit 0)
+    || (echo 'drush test: fail' && exit 1)
